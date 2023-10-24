@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c82f6a0ekudli"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_7jhwf"]
+[ext_resource type="Texture2D" uid="uid://c1ifvftsxrfs8" path="res://player/playerSprites.png" id="1_sx315"]
+[ext_resource type="PackedScene" uid="uid://doy86gv5mfv14" path="res://player/player_attack.tscn" id="2_r3exc"]
+[ext_resource type="PackedScene" uid="uid://cnssje8tv1uqp" path="res://player/player_bomb.tscn" id="3_6422a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otegp"]
+radius = 5.0
+height = 18.8
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7jhwf")
+bullet_tscn = ExtResource("2_r3exc")
+bomb_tscn = ExtResource("3_6422a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+process_priority = 1
+position = Vector2(3, -26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_sx315")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -29)
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_otegp")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true

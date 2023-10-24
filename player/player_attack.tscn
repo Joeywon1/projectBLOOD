@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://doy86gv5mfv14"]
+
+[ext_resource type="Script" path="res://player/player_attack.gd" id="1_6ijta"]
+[ext_resource type="Texture2D" uid="uid://du6jg0ro88udt" path="res://player/new_bullet.png" id="1_n365c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fpe0"]
+
+[node name="PlayerAttack" type="Area2D" groups=["attack"]]
+position = Vector2(0, -128)
+script = ExtResource("1_6ijta")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n365c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_3fpe0")
+debug_color = Color(0.976471, 0, 0.407843, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

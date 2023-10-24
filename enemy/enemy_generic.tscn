@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8h2p0dg5i5jw"]
+
+[ext_resource type="Script" path="res://enemy/enemy_generic.gd" id="1_2xa4y"]
+[ext_resource type="Texture2D" uid="uid://leposiqarab" path="res://icon.svg" id="1_fsm4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2m7h"]
+
+[node name="EnemyGeneric" type="Area2D" groups=["enemy"]]
+priority = 1.0
+script = ExtResource("1_2xa4y")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.156863, 0.313726, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fsm4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_b2m7h")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
