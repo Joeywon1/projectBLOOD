@@ -3,6 +3,7 @@ extends CharacterBody2D
 #player attacks
 @export var bullet_tscn: PackedScene
 @export var bomb_tscn: PackedScene
+@export var shield_tscn: PackedScene
 
 #player stats
 @export var speed = 300
@@ -37,16 +38,25 @@ func _shoot():
 	newBullet.position = self.position - y_offset
 	
 func _special_attack():
-		var bombCooldownTime = 5.0
-		$AttackCooldown.wait_time = bombCooldownTime
+#		var bombCooldownTime = 5.0
+#		$AttackCooldown.wait_time = bombCooldownTime
+#		if $AttackCooldown.time_left > 0.0:
+#			return
+#		else:
+#			fireRate = _get_time()
+#			var newBomb = bomb_tscn.instantiate()
+#			newBomb.position = self.position
+#			self.add_sibling(newBomb)
+#		$AttackCooldown.start()
+		
+		var shieldCooldownTime = 10.0 #might overwrite the bomb timer since they share it
+		$AttackCooldown.wait_time = shieldCooldownTime
 		if $AttackCooldown.time_left > 0.0:
 			return
 		else:
-			fireRate = _get_time()
-			var newBomb = bomb_tscn.instantiate()
-			newBomb.position = self.position
-			self.add_sibling(newBomb)
-		$AttackCooldown.start()
+			var newShield = shield_tscn.instantiate()
+			self.add_child(newShield)
+			$AttackCooldown.start()
 
 func _get_time():
 	return Time.get_ticks_msec() / 1000.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c82f6a0ekudli"]
+[gd_scene load_steps=7 format=3 uid="uid://c82f6a0ekudli"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7jhwf"]
 [ext_resource type="Texture2D" uid="uid://c1ifvftsxrfs8" path="res://player/playerSprites.png" id="1_sx315"]
 [ext_resource type="PackedScene" uid="uid://doy86gv5mfv14" path="res://player/player_attack.tscn" id="2_r3exc"]
 [ext_resource type="PackedScene" uid="uid://cnssje8tv1uqp" path="res://player/player_bomb.tscn" id="3_6422a"]
+[ext_resource type="PackedScene" uid="uid://couiyxqlo38u2" path="res://player/player_shield.tscn" id="4_no0b6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otegp"]
 radius = 5.0
@@ -13,6 +14,7 @@ height = 18.8
 script = ExtResource("1_7jhwf")
 bullet_tscn = ExtResource("2_r3exc")
 bomb_tscn = ExtResource("3_6422a")
+shield_tscn = ExtResource("4_no0b6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 process_priority = 1

@@ -1,7 +1,7 @@
 extends Area2D
 
 var bombLifespan_time = 1.0
-var maxsize = Vector2(2,2)
+var maxSize = Vector2(2,2)
 
 func _ready():
 	$BombLifespan.wait_time = bombLifespan_time
@@ -15,5 +15,5 @@ func _on_bomb_lifespan_timeout():
 
 func _explode():
 	var tween = create_tween()
-	tween.tween_property(self, "scale",maxsize, bombLifespan_time)
+	tween.tween_property(self, "scale",maxSize, bombLifespan_time)
 	tween.play()
