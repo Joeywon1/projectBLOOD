@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://clvb1yitosl0o"]
+
+[ext_resource type="Texture2D" uid="uid://co0ukngbk1n88" path="res://Assets/HUD/Specials/Flames.png" id="1_5kxsr"]
+[ext_resource type="Script" path="res://HUD/spell_button.gd" id="2_fbafx"]
+[ext_resource type="Texture2D" uid="uid://c8svic0y6ih3q" path="res://Assets/HUD/Specials/specialCooldown.png" id="2_vkptc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cq1et"]
+font_size = 31
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8vm6w"]
+font_size = 31
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="TextureButton"]
+custom_minimum_size = Vector2(149, 145)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_right = -1.0
+offset_bottom = 145.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_5kxsr")
+ignore_texture_size = true
+script = ExtResource("2_fbafx")
+metadata/_edit_group_ = true
+
+[node name="Progress" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 161.0
+offset_bottom = 161.0
+step = 0.05
+fill_mode = 5
+texture_progress = ExtResource("2_vkptc")
+tint_progress = Color(1, 1, 1, 0.498039)
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 26.0
+label_settings = SubResource("LabelSettings_cq1et")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Hotkey" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "k"
+label_settings = SubResource("LabelSettings_8vm6w")
+vertical_alignment = 2
+uppercase = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
