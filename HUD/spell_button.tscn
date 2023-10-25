@@ -33,7 +33,6 @@ script = ExtResource("2_fbafx")
 metadata/_edit_group_ = true
 
 [node name="Progress" type="TextureProgressBar" parent="."]
-layout_mode = 0
 offset_right = 161.0
 offset_bottom = 161.0
 step = 0.05
@@ -42,7 +41,6 @@ texture_progress = ExtResource("2_vkptc")
 tint_progress = Color(1, 1, 1, 0.498039)
 
 [node name="Time" type="Label" parent="."]
-layout_mode = 1
 offset_right = 40.0
 offset_bottom = 26.0
 label_settings = SubResource("LabelSettings_cq1et")
@@ -50,7 +48,6 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Hotkey" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

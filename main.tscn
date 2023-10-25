@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7pijcl33235f"]
+[gd_scene load_steps=6 format=3 uid="uid://d3vs13xgf67k7"]
 
+[ext_resource type="Script" path="res://utility/EnemySpawner.gd" id="1_0kn2u"]
 [ext_resource type="PackedScene" uid="uid://c82f6a0ekudli" path="res://player/player.tscn" id="1_qntbj"]
-[ext_resource type="Script" path="res://EnemySpawner.gd" id="1_v5bw4"]
 [ext_resource type="PackedScene" uid="uid://b8h2p0dg5i5jw" path="res://enemy/enemy_generic.tscn" id="3_xk1ns"]
 [ext_resource type="PackedScene" uid="uid://psygpqwkqlbi" path="res://HUD/hotbar.tscn" id="4_7maqp"]
 
@@ -20,7 +20,7 @@ one_way_collision_margin = 0.9
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(413, -76)
-script = ExtResource("1_v5bw4")
+script = ExtResource("1_0kn2u")
 enemy_scene = ExtResource("3_xk1ns")
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]

@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 #player stats
 @export var speed = 300
-@export var fireRate = 1.0
+@export var fireRate = 0.2
 @export var fireTime = 0.0
 
 func _process(delta):
@@ -16,7 +16,7 @@ func _process(delta):
 	if _move_player() == get_global_mouse_position():
 		print("samk")
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		_shoot()
 	
 	if Input.is_action_just_pressed("special"):
@@ -30,7 +30,7 @@ func _move_player():
 func _shoot():
 	if _get_time() - fireTime < fireRate:
 		return
-	fireRate = _get_time()
+	fireTime = _get_time()
 	var newBullet = bullet_tscn.instantiate()
 	newBullet.position = self.position
 	self.add_sibling(newBullet)
@@ -38,17 +38,6 @@ func _shoot():
 	newBullet.position = self.position - y_offset
 	
 func _special_attack():
-#		var bombCooldownTime = 5.0
-#		$AttackCooldown.wait_time = bombCooldownTime
-#		if $AttackCooldown.time_left > 0.0:
-#			return
-#		else:
-#			fireRate = _get_time()
-#			var newBomb = bomb_tscn.instantiate()
-#			newBomb.position = self.position
-#			self.add_sibling(newBomb)
-#		$AttackCooldown.start()
-		
 		var shieldCooldownTime = 10.0 #might overwrite the bomb timer since they share it
 		$AttackCooldown.wait_time = shieldCooldownTime
 		if $AttackCooldown.time_left > 0.0:

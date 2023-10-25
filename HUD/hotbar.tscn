@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://psygpqwkqlbi"]
+[gd_scene load_steps=7 format=3 uid="uid://psygpqwkqlbi"]
 
 [ext_resource type="PackedScene" uid="uid://clvb1yitosl0o" path="res://HUD/spell_button.tscn" id="1_6w6wl"]
 [ext_resource type="Script" path="res://HUD/Hotbar.gd" id="1_ep1la"]
 [ext_resource type="Texture2D" uid="uid://b8eh8jh7qldja" path="res://Assets/HUD/Specials/Bomb.png" id="2_2ty3p"]
 [ext_resource type="Texture2D" uid="uid://ca00i50xvbd52" path="res://Assets/HUD/Specials/Shield.png" id="3_k7mgp"]
+[ext_resource type="PackedScene" uid="uid://cnssje8tv1uqp" path="res://player/player_bomb.tscn" id="4_2ihn3"]
+[ext_resource type="PackedScene" uid="uid://couiyxqlo38u2" path="res://player/player_shield.tscn" id="6_rb2t3"]
 
 [node name="Control" type="Panel"]
 anchors_preset = 15
@@ -13,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Hotbar" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -23,13 +24,35 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_ep1la")
 
-[node name="SpellButton" parent="Hotbar" instance=ExtResource("1_6w6wl")]
-layout_mode = 2
+[node name="Bomb" parent="Hotbar" instance=ExtResource("1_6w6wl")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 160.0
+grow_horizontal = 1
 texture_normal = ExtResource("2_2ty3p")
+special_scene = ExtResource("4_2ihn3")
 
-[node name="SpellButton2" parent="Hotbar" instance=ExtResource("1_6w6wl")]
-layout_mode = 2
+[node name="Shield" parent="Hotbar" instance=ExtResource("1_6w6wl")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 149.0
+offset_right = 160.0
+offset_bottom = 294.0
+grow_horizontal = 1
 texture_normal = ExtResource("3_k7mgp")
+special_scene = ExtResource("6_rb2t3")
+cooldown_max_time = 10.0
 
-[node name="SpellButton3" parent="Hotbar" instance=ExtResource("1_6w6wl")]
-layout_mode = 2
+[node name="Flames" parent="Hotbar" instance=ExtResource("1_6w6wl")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 298.0
+offset_right = 160.0
+offset_bottom = 443.0
+grow_horizontal = 1

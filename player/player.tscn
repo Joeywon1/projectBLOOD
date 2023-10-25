@@ -10,7 +10,7 @@
 radius = 5.0
 height = 18.8
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_7jhwf")
 bullet_tscn = ExtResource("2_r3exc")
 bomb_tscn = ExtResource("3_6422a")

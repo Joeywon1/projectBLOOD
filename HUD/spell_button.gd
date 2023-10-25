@@ -5,6 +5,7 @@ extends TextureButton
 @onready var time_Label = $Time
 @onready var hotkey = $Hotkey
 
+@export var special_scene: PackedScene
 @export var cooldown_max_time = 5.0
 
 var change_key = "":
@@ -34,6 +35,20 @@ func _on_pressed():
 	cooldown.start()
 	disabled = true
 	set_process(true)
+	
+	var newSpecial = special_scene.instantiate()
+	var playerData = get_tree().get_first_node_in_group("player")
+	
+	#changes spawn point depending on what special
+	match change_key:
+		"1":
+			playerData.add_sibling(newSpecial)
+			newSpecial.position = playerData.position
+		"2":
+			playerData.add_child(newSpecial)
+		"3":
+			pass
+	
 
 func _on_cooldown_timer_timeout():
 	disabled = false
