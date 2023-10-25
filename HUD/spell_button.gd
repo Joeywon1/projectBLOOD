@@ -7,7 +7,19 @@ extends TextureButton
 
 @export var cooldown_max_time = 5.0
 
+var change_key = "":
+	set(value):
+		change_key = value
+		hotkey.text = value
+		
+		shortcut = Shortcut.new()
+		var input_key = InputEventKey.new()
+		input_key.keycode = value.unicode_at(0)
+		
+		shortcut.events = [input_key]
+
 func _ready():
+	change_key = "1"
 	cooldown.wait_time = cooldown_max_time
 	progress_anmation.max_value = cooldown.wait_time
 	set_process(false)
