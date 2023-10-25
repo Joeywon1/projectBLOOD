@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7pijcl33235f"]
+[gd_scene load_steps=6 format=3 uid="uid://b7pijcl33235f"]
 
 [ext_resource type="PackedScene" uid="uid://c82f6a0ekudli" path="res://player/player.tscn" id="1_qntbj"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="1_v5bw4"]
 [ext_resource type="PackedScene" uid="uid://b8h2p0dg5i5jw" path="res://enemy/enemy_generic.tscn" id="3_xk1ns"]
+[ext_resource type="PackedScene" uid="uid://psygpqwkqlbi" path="res://HUD/hotbar.tscn" id="4_7maqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sktuv"]
 size = Vector2(902, 192)
 
 [node name="Main" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="PlayerBlocker" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBlocker"]
 position = Vector2(391, 75)
 shape = SubResource("RectangleShape2D_sktuv")
 one_way_collision = true
@@ -26,6 +27,16 @@ enemy_scene = ExtResource("3_xk1ns")
 autostart = true
 
 [node name="player" parent="." instance=ExtResource("1_qntbj")]
-position = Vector2(600, 718)
+
+[node name="Control" parent="." instance=ExtResource("4_7maqp")]
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = 803.0
+offset_top = 168.0
+offset_right = 803.0
+offset_bottom = 168.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_spawn_enemy"]

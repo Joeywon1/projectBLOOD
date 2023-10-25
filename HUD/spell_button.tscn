@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c8svic0y6ih3q" path="res://Assets/HUD/Specials/specialCooldown.png" id="2_vkptc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cq1et"]
-font_size = 31
+font_size = 15
 outline_size = 14
 outline_color = Color(0, 0, 0, 1)
 
