@@ -27,6 +27,7 @@ enemy_scene = ExtResource("3_xk1ns")
 autostart = true
 
 [node name="player" parent="." instance=ExtResource("1_qntbj")]
+position = Vector2(398, 699)
 
 [node name="Control" parent="." instance=ExtResource("4_7maqp")]
 anchors_preset = 11

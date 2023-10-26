@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://q62fq6m3bp4l"]
+
+[ext_resource type="Script" path="res://player/player_flames.gd" id="1_d0lbl"]
+[ext_resource type="Texture2D" uid="uid://cyn5is7ry7xwr" path="res://player/flamecut.png" id="2_7ec22"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2jpk"]
+
+[node name="player_flames" type="Area2D" groups=["attack"]]
+texture_repeat = 2
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_d0lbl")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("2_7ec22")
+region_enabled = true
+region_rect = Rect2(0, 0, 69.0456, 69.4431)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_s2jpk")
+metadata/_edit_lock_ = true
+
+[node name="FlamesLifespan" type="Timer" parent="."]
+
+[connection signal="timeout" from="FlamesLifespan" to="." method="_on_flames_lifespan_timeout"]

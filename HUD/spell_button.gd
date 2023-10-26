@@ -47,10 +47,13 @@ func _on_pressed():
 		"2":
 			playerData.add_child(newSpecial)
 		"3":
-			pass
+			newSpecial.position = playerData.position
+			playerData.add_sibling(newSpecial)
+			
 	
 
 func _on_cooldown_timer_timeout():
 	disabled = false
 	time_Label.text = ""
 	set_process(false)
+
