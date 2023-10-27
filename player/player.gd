@@ -10,6 +10,8 @@ extends CharacterBody2D
 @export var fireRate = 0.2
 @export var fireTime = 0.0
 
+var collected_exp = 0
+
 func _process(delta):
 	_move_player()
 	#this fixes jittering for some reason
@@ -49,3 +51,22 @@ func _special_attack():
 
 func _get_time():
 	return Time.get_ticks_msec() / 1000.0
+
+
+func _on_magnet_zone_area_entered(area):
+	if area.is_in_group("loot"):
+		area.target = self
+
+
+func _on_collection_zone_area_entered(area):
+	if area.is_in_group("loot"):
+		var gem_exp = area.collect()
+		calculate_experience(gem_exp)
+		Godstats.experience += gem_exp
+		print(Godstats.experience)
+		#get the collected xp and gives at end of level
+#		collected_exp += gem_exp
+#		return collected_exp
+	
+func calculate_experience(gem_exp):
+	pass

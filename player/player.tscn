@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c82f6a0ekudli"]
+[gd_scene load_steps=9 format=3 uid="uid://c82f6a0ekudli"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_7jhwf"]
 [ext_resource type="Texture2D" uid="uid://c1ifvftsxrfs8" path="res://player/playerSprites.png" id="1_sx315"]
@@ -9,6 +9,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otegp"]
 radius = 5.0
 height = 18.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjqgd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bjah"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_7jhwf")
@@ -32,3 +36,26 @@ shape = SubResource("CapsuleShape2D_otegp")
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="MagnetZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetZone"]
+position = Vector2(0, -18)
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_jjqgd")
+debug_color = Color(0.541176, 0.152941, 0.137255, 0.419608)
+
+[node name="CollectionZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionZone"]
+position = Vector2(0, -20)
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_7bjah")
+debug_color = Color(0.811765, 0.356863, 0.541176, 0.419608)
+
+[connection signal="area_entered" from="MagnetZone" to="." method="_on_magnet_zone_area_entered"]
+[connection signal="area_entered" from="CollectionZone" to="." method="_on_collection_zone_area_entered"]

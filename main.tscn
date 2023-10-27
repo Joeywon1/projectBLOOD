@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3vs13xgf67k7"]
+[gd_scene load_steps=8 format=3 uid="uid://d3vs13xgf67k7"]
 
 [ext_resource type="Script" path="res://utility/EnemySpawner.gd" id="1_0kn2u"]
 [ext_resource type="PackedScene" uid="uid://c82f6a0ekudli" path="res://player/player.tscn" id="1_qntbj"]
 [ext_resource type="PackedScene" uid="uid://b8h2p0dg5i5jw" path="res://enemy/enemy_generic.tscn" id="3_xk1ns"]
 [ext_resource type="PackedScene" uid="uid://psygpqwkqlbi" path="res://HUD/hotbar.tscn" id="4_7maqp"]
+[ext_resource type="PackedScene" uid="uid://dpfiwmankjvew" path="res://obj/blood_exp.tscn" id="5_5rg2b"]
+[ext_resource type="PackedScene" uid="uid://dido7t4hkd7uc" path="res://HUD/gui_stats.tscn" id="6_cutmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sktuv"]
 size = Vector2(902, 192)
@@ -39,5 +41,10 @@ offset_bottom = 168.0
 grow_horizontal = 0
 scale = Vector2(0.7, 0.7)
 metadata/_edit_use_anchors_ = true
+
+[node name="BloodExp" parent="." instance=ExtResource("5_5rg2b")]
+position = Vector2(555, 161)
+
+[node name="GuiStats" parent="." instance=ExtResource("6_cutmq")]
 
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_spawn_enemy"]

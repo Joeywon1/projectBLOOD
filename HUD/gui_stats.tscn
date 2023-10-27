@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dido7t4hkd7uc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_55l4q"]
+font_size = 22
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GuiStats" type="CanvasLayer"]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="GUI"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "EXPERIENCE POINTS HERE"
+label_settings = SubResource("LabelSettings_55l4q")
+uppercase = true
