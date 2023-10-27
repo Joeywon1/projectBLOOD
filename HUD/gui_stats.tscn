@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dido7t4hkd7uc"]
+[gd_scene load_steps=3 format=3 uid="uid://dido7t4hkd7uc"]
+
+[ext_resource type="Script" path="res://HUD/ExpLabel.gd" id="1_itvk8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_55l4q"]
 font_size = 22
@@ -16,9 +18,10 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="GUI"]
+[node name="XP Label" type="Label" parent="GUI"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "EXPERIENCE POINTS HERE"
 label_settings = SubResource("LabelSettings_55l4q")
 uppercase = true
+script = ExtResource("1_itvk8")

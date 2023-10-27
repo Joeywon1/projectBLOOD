@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cyn5is7ry7xwr" path="res://player/flamecut.png" id="1_k23t4"]
 [ext_resource type="Script" path="res://obj/blood_exp.gd" id="1_lxbky"]
-[ext_resource type="AudioStream" uid="uid://drxnmafcl4gtl" path="res://audio/sound.wav" id="3_bgqfj"]
+[ext_resource type="AudioStream" uid="uid://dpguqkywt2t5f" path="res://audio/collect.mp3" id="3_8b0ck"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d12r7"]
 radius = 23.0
@@ -22,7 +22,7 @@ texture = ExtResource("1_k23t4")
 shape = SubResource("CapsuleShape2D_d12r7")
 
 [node name="CollectionSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_bgqfj")
-pitch_scale = 3.27
+stream = ExtResource("3_8b0ck")
+pitch_scale = 1.14
 
 [connection signal="finished" from="CollectionSound" to="." method="_on_collection_sound_finished"]

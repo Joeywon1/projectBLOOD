@@ -43,7 +43,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetZone"]
 position = Vector2(0, -18)
-scale = Vector2(30, 30)
+scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_jjqgd")
 debug_color = Color(0.541176, 0.152941, 0.137255, 0.419608)
 

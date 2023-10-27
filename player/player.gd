@@ -63,10 +63,9 @@ func _on_collection_zone_area_entered(area):
 		var gem_exp = area.collect()
 		calculate_experience(gem_exp)
 		Godstats.experience += gem_exp
-		print(Godstats.experience)
 		#get the collected xp and gives at end of level
 #		collected_exp += gem_exp
 #		return collected_exp
 	
-func calculate_experience(gem_exp):
+func calculate_experience(_gem_exp):
 	pass
