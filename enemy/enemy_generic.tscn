@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8h2p0dg5i5jw"]
+[gd_scene load_steps=6 format=3 uid="uid://b8h2p0dg5i5jw"]
 
 [ext_resource type="Script" path="res://enemy/enemy_generic.gd" id="1_2xa4y"]
 [ext_resource type="Texture2D" uid="uid://leposiqarab" path="res://icon.svg" id="1_fsm4l"]
+[ext_resource type="PackedScene" uid="uid://7n1j7hhfe5wf" path="res://enemy/enemy_bullet.tscn" id="2_jvg31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2m7h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_id7s7"]
+radius = 302.007
 
 [node name="EnemyGeneric" type="Area2D" groups=["enemy"]]
 priority = 1.0
 script = ExtResource("1_2xa4y")
+bulletType = ExtResource("2_jvg31")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +24,10 @@ texture = ExtResource("1_fsm4l")
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_b2m7h")
 
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_id7s7")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

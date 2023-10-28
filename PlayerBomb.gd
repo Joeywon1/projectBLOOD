@@ -1,7 +1,7 @@
 extends Area2D
 
-var bombLifespan_time = 1.0
-var maxSize = Vector2(2,2)
+@export var bombLifespan_time = 3.0
+@export var maxSize = Vector2(2.5,2.5)
 
 func _ready():
 	$BombLifespan.wait_time = bombLifespan_time

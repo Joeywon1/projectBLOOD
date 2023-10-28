@@ -1,15 +1,12 @@
 extends CharacterBody2D
 
-#player attacks
+#player attack
 @export var bullet_tscn: PackedScene
-@export var bomb_tscn: PackedScene
-@export var shield_tscn: PackedScene
 
 #player stats
 @export var speed = 300
 @export var fireRate = 0.2
 @export var fireTime = 0.0
-
 var collected_exp = 0
 
 func _process(delta):
@@ -20,9 +17,6 @@ func _process(delta):
 	
 	if Input.is_action_pressed("shoot"):
 		_shoot()
-	
-	if Input.is_action_just_pressed("special"):
-		_special_attack()
 
 func _move_player():
 	var target = get_global_mouse_position() - self.position
@@ -38,16 +32,6 @@ func _shoot():
 	self.add_sibling(newBullet)
 	var y_offset = Vector2(0,125)
 	newBullet.position = self.position - y_offset
-	
-func _special_attack():
-		var shieldCooldownTime = 10.0 #might overwrite the bomb timer since they share it
-		$AttackCooldown.wait_time = shieldCooldownTime
-		if $AttackCooldown.time_left > 0.0:
-			return
-		else:
-			var newShield = shield_tscn.instantiate()
-			self.add_child(newShield)
-			$AttackCooldown.start()
 
 func _get_time():
 	return Time.get_ticks_msec() / 1000.0
@@ -61,11 +45,7 @@ func _on_magnet_zone_area_entered(area):
 func _on_collection_zone_area_entered(area):
 	if area.is_in_group("loot"):
 		var gem_exp = area.collect()
-		calculate_experience(gem_exp)
 		Godstats.experience += gem_exp
 		#get the collected xp and gives at end of level
 #		collected_exp += gem_exp
 #		return collected_exp
-	
-func calculate_experience(_gem_exp):
-	pass

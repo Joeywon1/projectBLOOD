@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://7n1j7hhfe5wf"]
+
+[ext_resource type="Texture2D" uid="uid://leposiqarab" path="res://icon.svg" id="1_fityj"]
+[ext_resource type="Script" path="res://enemy/enemy_bullet.gd" id="1_uyntt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6oiwf"]
+size = Vector2(20, 50)
+
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_uyntt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.133333, 0, 1)
+scale = Vector2(0.1, 0.3)
+texture = ExtResource("1_fityj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6oiwf")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
