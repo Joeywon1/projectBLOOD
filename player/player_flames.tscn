@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s2jpk"]
 
-[node name="player_flames" type="Area2D" groups=["attack"]]
+[node name="player_flames" type="Area2D" groups=["attack", "special"]]
 texture_repeat = 2
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_d0lbl")
