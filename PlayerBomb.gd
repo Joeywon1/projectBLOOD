@@ -9,6 +9,8 @@ func _ready():
 
 func _process(delta):
 	_explode()
+	if $BombLifespan.time_left != 0.1 and $BombLifespan.time_left <= bombLifespan_time * .25:
+		self.modulate.r += .1
 
 func _on_bomb_lifespan_timeout():
 	self.queue_free()

@@ -13,9 +13,9 @@ func _ready():
 	tween.play()
 
 func _process(delta):
-#	var area = self.get_parent().position
-#	position = area
-	pass
+	if $ShieldLifespan.time_left != 0.1 and $ShieldLifespan.time_left <= shieldLifespan_time * .25:
+		self.modulate.r -= 0.2
+		self.modulate.a -= 0.05
 
 func _on_shield_lifespan_timeout():
 	self.queue_free()
