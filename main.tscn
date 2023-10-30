@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3vs13xgf67k7"]
 
-[ext_resource type="PackedScene" uid="uid://c4orq4gdgq5r7" path="res://utility/enemy_spawner.tscn" id="1_jjrk4"]
 [ext_resource type="PackedScene" uid="uid://c82f6a0ekudli" path="res://player/player.tscn" id="1_qntbj"]
 [ext_resource type="PackedScene" uid="uid://b8h2p0dg5i5jw" path="res://enemy/enemy_generic.tscn" id="3_xk1ns"]
+[ext_resource type="Script" path="res://utility/Spawner.gd" id="4_5hjsx"]
 [ext_resource type="PackedScene" uid="uid://psygpqwkqlbi" path="res://HUD/hotbar.tscn" id="4_7maqp"]
-[ext_resource type="PackedScene" uid="uid://dpfiwmankjvew" path="res://obj/blood_exp.tscn" id="5_5rg2b"]
 [ext_resource type="PackedScene" uid="uid://dido7t4hkd7uc" path="res://HUD/gui_stats.tscn" id="6_cutmq"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_rlyp0"]
+offsets = PackedFloat32Array(0, 0.429688, 0.65625, 1)
+colors = PackedColorArray(1, 0.799058, 0.530191, 1, 0.505882, 0.180392, 0.027451, 0.905882, 0.403922, 0.2, 0.133333, 1, 0.316376, 0.214997, 0.222676, 1)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("1_jjrk4")]
-enemy_scene = ExtResource("3_xk1ns")
+[node name="Main" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_qntbj")]
 position = Vector2(398, 699)
@@ -27,7 +27,45 @@ grow_horizontal = 0
 scale = Vector2(0.7, 0.7)
 metadata/_edit_use_anchors_ = true
 
-[node name="BloodExp" parent="." instance=ExtResource("5_5rg2b")]
-position = Vector2(397, 220)
-
 [node name="GuiStats" parent="." instance=ExtResource("6_cutmq")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(419, -229)
+rotation = 1.37893
+amount = 32
+lifetime = 5.0
+explosiveness = 0.2
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 65.77
+gravity = Vector2(0, 50)
+initial_velocity_min = 200.0
+initial_velocity_max = 307.69
+angle_max = 200.0
+scale_amount_max = 13.83
+color_ramp = SubResource("Gradient_rlyp0")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_5hjsx")
+enemyBase = ExtResource("3_xk1ns")
+enemyPositon = [Vector2(450, 0)]
+
+[node name="SpawnPoints" type="Node2D" parent="Spawner"]
+position = Vector2(450, 0)
+
+[node name="SpawnPoint1" type="Node2D" parent="Spawner/SpawnPoints"]
+position = Vector2(-350, 0)
+
+[node name="SpawnPoint2" type="Node2D" parent="Spawner/SpawnPoints"]
+position = Vector2(-200, 0)
+
+[node name="SpawnPoint3" type="Node2D" parent="Spawner/SpawnPoints"]
+position = Vector2(-50, 0)
+
+[node name="SpawnPoint4" type="Node2D" parent="Spawner/SpawnPoints"]
+position = Vector2(100, 0)
+
+[node name="SpawnPoint5" type="Node2D" parent="Spawner/SpawnPoints"]
+position = Vector2(250, 0)

@@ -33,7 +33,10 @@ func enemy_death():
 	var newExp = bloodExp.instantiate()
 	newExp.position = self.position
 	newExp.experience = expGiven
+	
 	get_tree().root.get_node("Main").call_deferred("add_child", newExp)
+#	#temp, main will be the level manager 
+#	get_tree().root.get_node("Level1").call_deferred("add_child", newExp)
 	queue_free()
 
 func _on_player_detection_body_entered(body):
