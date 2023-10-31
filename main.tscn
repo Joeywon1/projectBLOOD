@@ -50,7 +50,9 @@ hue_variation_max = 1.0
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("4_5hjsx")
 enemyBase = ExtResource("3_xk1ns")
-enemyPositon = [Vector2(450, 0)]
+enemyMax = 40
+spawnRate = 0.5
+enemyPositon = [Vector2(50, 0), Vector2(200, 0), Vector2(350, 0), Vector2(500, 0), Vector2(650, 0)]
 
 [node name="SpawnPoints" type="Node2D" parent="Spawner"]
 position = Vector2(450, 0)
