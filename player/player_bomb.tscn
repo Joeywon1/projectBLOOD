@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnssje8tv1uqp"]
+[gd_scene load_steps=4 format=3 uid="uid://r3edshn51ltm"]
 
-[ext_resource type="Script" path="res://PlayerBomb.gd" id="1_akbae"]
+[ext_resource type="Script" path="res://player/Player_bomb.gd" id="1_8psuu"]
 [ext_resource type="Texture2D" uid="uid://du6jg0ro88udt" path="res://player/new_bullet.png" id="2_0n0k7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h5bta"]
 
 [node name="Player_bomb" type="Area2D" groups=["attack", "special"]]
 scale = Vector2(0.2, 0.2)
-script = ExtResource("1_akbae")
+script = ExtResource("1_8psuu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.556863, 0.0235294, 1)

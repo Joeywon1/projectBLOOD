@@ -21,13 +21,21 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_fsm4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_b2m7h")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_id7s7")
+debug_color = Color(0.94902, 0.0627451, 0.545098, 0.419608)
+
+[node name="AoeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="AoeTimer" to="." method="_on_aoe_timer_timeout"]

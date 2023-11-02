@@ -3,6 +3,7 @@ extends Area2D
 var lifespan = 1.5
 var cooldownTime = 1.0 
 var bulletSpeed = 10
+var damage = 1
 
 func _ready():
 	$Timer.wait_time = lifespan
@@ -17,3 +18,9 @@ func _on_timer_timeout():
 func _on_area_entered(area):
 	if area.is_in_group("special"):
 		queue_free()
+
+
+
+func _on_body_entered(body):
+	if body.is_in_group("player"):
+		body.hurt(damage)

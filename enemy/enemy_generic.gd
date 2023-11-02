@@ -6,7 +6,7 @@ extends Area2D
 @export var health = 3
 @export var bulletType: PackedScene
 
-enum enemyState {IDLE, SHOOT, SPEEDING}
+enum enemyState {IDLE, SHOOT, SPEEDING, HURT}
 var state = enemyState.IDLE
 
 var bloodExp = preload("res://obj/blood_exp.tscn")
@@ -24,10 +24,22 @@ func _process(delta):
 			bulletShot.position = self.position + y_offset
 			add_sibling(bulletShot)
 			state = enemyState.IDLE
+		enemyState.HURT:
+			if $AoeTimer.time_left != 0.0:
+				$PlayerDetection/CollisionShape2D.set_deferred("disabled", true)
+				health -= 1
+			else:
+				state = enemyState.IDLE
 
 func _on_area_entered(area):
 	if area.is_in_group("attack"):
-		enemy_death()
+		health -= area.damage
+		if health <= 0:
+			enemy_death()
+	if area.is_in_group("special"):
+		health -= area.damage
+		$AoeTimer.start()
+		state = enemyState.HURT
 
 func enemy_death():
 	var newExp = bloodExp.instantiate()
@@ -42,4 +54,6 @@ func enemy_death():
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("player"):
 		state = enemyState.SHOOT
-		
+
+func _on_aoe_timer_timeout():
+	state = enemyState.IDLE

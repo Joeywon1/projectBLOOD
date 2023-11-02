@@ -7,7 +7,15 @@ extends CharacterBody2D
 @export var speed = 300
 @export var fireRate = 0.2
 @export var fireTime = 0.0
+@export var maxHealth = 3
+var health = maxHealth
 var collected_exp = 0
+
+signal playerDeath
+signal healthUpdate
+
+func _ready():
+	health = clamp(maxHealth, 0, maxHealth)
 
 func _process(delta):
 	_move_player()
@@ -17,6 +25,23 @@ func _process(delta):
 	
 	if Input.is_action_pressed("shoot"):
 		_shoot()
+		
+func hurt(amount):
+	set_health(health - amount)
+	
+func set_health(value):
+	var prevHealth = health
+	health = value
+	print(health)
+	
+	if health != prevHealth:
+		emit_signal("healthUpdate", health)
+		if health == 0:
+			death()
+			emit_signal("playerDeath")
+
+func death():
+	queue_free()
 
 func _move_player():
 	var target = get_global_mouse_position() - self.position

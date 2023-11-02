@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var bulletSpeed = 5
+@export var damage = 1
 
 func _process(delta):
 	position.y = self.position.y - 5

@@ -6,8 +6,6 @@ extends Node2D
 @export var spawnRate = 1.0
 @export var enemyPositon: Array[Vector2]
 
-@onready var spawnPoints = $SpawnPoints.get_children()
-
 var enemyAmount = 0
 var spawnTime = 0.0
 var gameTime = 0.0
@@ -22,6 +20,5 @@ func _process(delta):
 		spawnTime = 0
 		enemyAmount += 1
 		var enemy = enemyBase.instantiate()
-		enemy.set_name("enemy" + str(enemyAmount))
 		enemy.position = enemyPositon.pick_random()
 		get_tree().get_root().add_child(enemy)

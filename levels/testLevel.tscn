@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsxtra6wownnp"]
+
+[ext_resource type="PackedScene" uid="uid://c82f6a0ekudli" path="res://player/player.tscn" id="1_6drww"]
+[ext_resource type="PackedScene" uid="uid://psygpqwkqlbi" path="res://HUD/hotbar.tscn" id="2_18agk"]
+[ext_resource type="PackedScene" uid="uid://dido7t4hkd7uc" path="res://HUD/gui_stats.tscn" id="3_rg3ai"]
+[ext_resource type="Script" path="res://utility/Spawner.gd" id="4_105t5"]
+[ext_resource type="PackedScene" uid="uid://b8h2p0dg5i5jw" path="res://enemy/enemy_generic.tscn" id="5_a8ju5"]
+
+[sub_resource type="Gradient" id="Gradient_rlyp0"]
+offsets = PackedFloat32Array(0, 0.429688, 0.65625, 1)
+colors = PackedColorArray(1, 0.799058, 0.530191, 1, 0.505882, 0.180392, 0.027451, 0.905882, 0.403922, 0.2, 0.133333, 1, 0.316376, 0.214997, 0.222676, 1)
+
+[node name="Node" type="Node"]
+
+[node name="player" parent="." instance=ExtResource("1_6drww")]
+position = Vector2(398, 699)
+collision_layer = 3
+
+[node name="Control" parent="." instance=ExtResource("2_18agk")]
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = 3.0
+offset_top = 168.0
+offset_right = 3.0
+offset_bottom = 168.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+metadata/_edit_use_anchors_ = true
+
+[node name="GuiStats" parent="." instance=ExtResource("3_rg3ai")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(419, -229)
+rotation = 1.37893
+amount = 32
+lifetime = 5.0
+explosiveness = 0.2
+emission_shape = 1
+emission_sphere_radius = 5.0
+spread = 65.77
+gravity = Vector2(0, 50)
+initial_velocity_min = 200.0
+initial_velocity_max = 307.69
+angle_max = 200.0
+scale_amount_max = 13.83
+color_ramp = SubResource("Gradient_rlyp0")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_105t5")
+enemyBase = ExtResource("5_a8ju5")
+enemyMax = 40
+spawnRate = 0.5
+enemyPositon = [Vector2(50, 0), Vector2(200, 0), Vector2(350, 0), Vector2(500, 0), Vector2(650, 0)]
